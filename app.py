@@ -22,14 +22,19 @@ def validate_user(username, password):
 def login():
     return render_template('index.html')
 
-@app.route('/login/', methods=['POST'])
+@app.route('/login/', methods=['POST', 'GET'])
 def do_login():
+    print('logging in')
     username = request.form['username']
     password = request.form['password']
     if validate_user(username, password):
+        print("Correct password")
         return render_template('index.html')
+            
     else:
+        print("incorrect password")
         return render_template('index.html', error = 'Incorrect Password')
+            
 
 if __name__ == '__main__':
     app.run(debug=True)
