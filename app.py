@@ -7,8 +7,8 @@ def validate_user(username, password):
     conn = psycopg2.connect(
         host = "localhost",
         database = "logindata",
-        user="postgres",
-        password="root"
+        user = "postgres",
+        password = "root"
     )
     cur = conn.cursor()
     cur.execute("SELECT username, password FROM logintable WHERE username = %s AND password = %s", (username, password))
@@ -70,5 +70,8 @@ def do_signup():
 def log_out():
     print('logging out')
     return render_template('login.html')
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
