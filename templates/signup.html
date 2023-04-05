@@ -12,15 +12,24 @@
             <h2>Sign Up Form</h2>
             <form  action="/dosignup/" method="POST">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username">
 
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password">
                 
                 <label for="password">Confirm Password</label>
-                <input type="password" id="password" name="password" required>
-
-                <button type="submit">Sign Up</button>
+                <input type="password" id="confirmpassword" name="confirmpassword">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul class="flashes">
+                    {%for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+                <input type ="submit" class = "signupform" name = 'btnid' value = "Sign Up">
+                <input type="submit" class = "signupform" name = 'btnid' value = "Back To Login">
             </form>
         </div>
     </body>
